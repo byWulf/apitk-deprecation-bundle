@@ -57,9 +57,9 @@ class DeprecationListener
             return;
         }
 
-        $this->headerInformation->add('deprecated', 'deprecated');
+        $this->headerInformation->add('rfc18-deprecated', 'deprecated');
         if ($annotation->getRemovedAfter()) {
-            $this->headerInformation->add('deprecated-removed-at', $annotation->getRemovedAfter()->format('Y-m-d'));
+            $this->headerInformation->add('rfc18-deprecated-removed-at', $annotation->getRemovedAfter()->format('Y-m-d'));
         }
     }
 
