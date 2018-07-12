@@ -1,0 +1,15 @@
+services:
+
+    Ofeige\ApiBundle\EventListener\DeprecationListener:
+        autowire: true
+        tags:
+            - {name: kernel.event_listener, event: kernel.controller}
+
+    Ofeige\ApiBundle\Describer\AnnotationDescriber:
+        autowire: true
+        public: false
+        arguments:
+            - '@nelmio_api_doc.routes.default'
+            - '@nelmio_api_doc.controller_reflector'
+        tags:
+            - {name: 'nelmio_api_doc.route_describer', priority: -2000 }
