@@ -1,11 +1,11 @@
 services:
 
-    Ofeige\ApiBundle\EventListener\DeprecationListener:
+    Ofeige\Rfc18Bundle\EventListener\DeprecationListener:
         autowire: true
         tags:
             - {name: kernel.event_listener, event: kernel.controller}
 
-    Ofeige\ApiBundle\Describer\AnnotationDescriber:
+    Ofeige\Rfc18Bundle\Describer\AnnotationDescriber:
         autowire: true
         public: false
         arguments:
