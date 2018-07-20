@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Ofeige\Rfc18Bundle\Annotation;
+namespace Shopping\ApiDeprecationBundle\Annotation;
 
 /**
  * Class Deprecated
  *
- * @package Ofeige\Rfc18Bundle\Annotation
+ * @package Shopping\ApiDeprecationBundle\Annotation
  * @Annotation
  */
 class Deprecated

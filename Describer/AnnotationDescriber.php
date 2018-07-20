@@ -1,6 +1,6 @@
 <?php
 
-namespace Ofeige\Rfc18Bundle\Describer;
+namespace Shopping\ApiDeprecationBundle\Describer;
 
 use Doctrine\Common\Annotations\Reader;
 use EXSyst\Component\Swagger\Operation;
@@ -11,14 +11,14 @@ use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareInterface;
 use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareTrait;
 use Nelmio\ApiDocBundle\Util\ControllerReflector;
 use Symfony\Component\Routing\RouteCollection;
-use Ofeige\Rfc18Bundle\Annotation AS Rfc18;
+use Shopping\ApiDeprecationBundle\Annotation AS Rfc18;
 
 /**
  * Class AnnotationDescriber
  *
  * Auto generates deprecation notices to the documentation
  *
- * @package Ofeige\Rfc18Bundle\Describer
+ * @package Shopping\ApiDeprecationBundle\Describer
  */
 class AnnotationDescriber implements DescriberInterface, ModelRegistryAwareInterface
 {

@@ -17,7 +17,7 @@ Add this repository to your `composer.json` until it is available at packagist:
 
 After that, install the package via composer:
 ```
-composer install ofeige/rfc18-bundle:dev-master
+composer install shopping/api-deprecation-bundle:dev-master
 ```
 
 ## Usage

@@ -1,13 +1,13 @@
 <?php
 
-namespace Ofeige\Rfc18Bundle\DependencyInjection;
+namespace Shopping\ApiDeprecationBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class OfeigeRfc18Extension extends Extension
+class ShoppingApiDeprecationExtension extends Extension
 {
     /**
      * Loads a specific configuration.

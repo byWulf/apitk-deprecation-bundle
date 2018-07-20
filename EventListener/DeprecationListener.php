@@ -1,11 +1,11 @@
 <?php
 
-namespace Ofeige\Rfc18Bundle\EventListener;
+namespace Shopping\ApiDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
-use Ofeige\ApiBundle\Service\HeaderInformation;
+use Shopping\ApiHelperBundle\Service\HeaderInformation;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Ofeige\Rfc18Bundle\Annotation as Rfc18;
+use Shopping\ApiDeprecationBundle\Annotation as Rfc18;
 use Symfony\Component\HttpKernel\Tests\Controller;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Tests\Controller;
  *
  * Remember, what controller got called in this request, so we can get the corresponding annotation in the ResponseView.
  *
- * @package Ofeige\Rfc18Bundle\EventListener
+ * @package Shopping\ApiDeprecationBundle\EventListener
  */
 class DeprecationListener
 {
