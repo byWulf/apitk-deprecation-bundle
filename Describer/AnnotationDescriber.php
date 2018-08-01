@@ -11,7 +11,7 @@ use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareInterface;
 use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareTrait;
 use Nelmio\ApiDocBundle\Util\ControllerReflector;
 use Symfony\Component\Routing\RouteCollection;
-use Shopping\ApiDeprecationBundle\Annotation AS Rfc18;
+use Shopping\ApiDeprecationBundle\Annotation\Deprecated;
 
 /**
  * Class AnnotationDescriber
@@ -68,7 +68,7 @@ class AnnotationDescriber implements DescriberInterface, ModelRegistryAwareInter
                 foreach ($this->getMethodsToParse() as $classMethod => list($methodPath, $httpMethods)) {
                     if ($methodPath === $uri && in_array($method, $httpMethods)) {
                         foreach ($this->reader->getMethodAnnotations($classMethod) as $annotation) {
-                            if (!$annotation instanceof Rfc18\Deprecated) {
+                            if (!$annotation instanceof Deprecated) {
                                 continue;
                             }
 

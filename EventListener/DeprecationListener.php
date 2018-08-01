@@ -5,7 +5,7 @@ namespace Shopping\ApiDeprecationBundle\EventListener;
 use Doctrine\Common\Annotations\Reader;
 use Shopping\ApiHelperBundle\Service\HeaderInformation;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Shopping\ApiDeprecationBundle\Annotation as Rfc18;
+use Shopping\ApiDeprecationBundle\Annotation\Deprecated;
 use Symfony\Component\HttpKernel\Tests\Controller;
 
 /**
@@ -57,17 +57,17 @@ class DeprecationListener
             return;
         }
 
-        $this->headerInformation->add('rfc18-deprecated', 'deprecated');
+        $this->headerInformation->add('deprecated', 'deprecated');
         if ($annotation->getRemovedAfter()) {
-            $this->headerInformation->add('rfc18-deprecated-removed-at', $annotation->getRemovedAfter()->format('Y-m-d'));
+            $this->headerInformation->add('deprecated-removed-at', $annotation->getRemovedAfter()->format('Y-m-d'));
         }
     }
 
     /**
      * @param callable $controller
-     * @return null|Rfc18\Deprecated
+     * @return null|Deprecated
      */
-    private function getViewAnnotationByController(callable $controller): ?Rfc18\Deprecated
+    private function getViewAnnotationByController(callable $controller): ?Deprecated
     {
         /** @var Controller $controllerObject */
         list($controllerObject, $methodName) = $controller;
@@ -77,7 +77,7 @@ class DeprecationListener
 
         $annotations = $this->reader->getMethodAnnotations($reflectionMethod);
         foreach ($annotations as $annotation) {
-            if ($annotation instanceof Rfc18\Deprecated) {
+            if ($annotation instanceof Deprecated) {
                 return $annotation;
             }
         }
