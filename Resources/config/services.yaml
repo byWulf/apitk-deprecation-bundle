@@ -1,15 +1,17 @@
 services:
-
     Shopping\ApiTKDeprecationBundle\EventListener\DeprecationListener:
-        autowire: true
+        public: false
+        arguments:
+            - '@annotations.reader'
+            - '@Shopping\ApiTKHeaderBundle\Service\HeaderInformation'
         tags:
-            - {name: kernel.event_listener, event: kernel.controller}
+            - { name: kernel.event_listener, event: kernel.controller }
 
     Shopping\ApiTKDeprecationBundle\Describer\AnnotationDescriber:
-        autowire: true
         public: false
         arguments:
             - '@nelmio_api_doc.routes.default'
-            - '@nelmio_api_doc.controller_reflector'
+            - '@Shopping\ApiTKCommonBundle\Util\ControllerReflector'
+            - '@annotations.reader'
         tags:
-            - {name: 'nelmio_api_doc.route_describer', priority: -2000 }
+            - { name: 'nelmio_api_doc.route_describer', priority: -2000 }
