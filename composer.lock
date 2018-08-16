@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b406d8bc422dad533e14d977c3acf2cc",
+    "content-hash": "f0ee7b3a3c9d4bbe280d54ad13fda074",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1397,16 +1397,16 @@
         },
         {
             "name": "shopping/apitk-common-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CHECK24/apitk-common-bundle.git",
-                "reference": "57cc349102325984544def3618d7d9bd1b23a649"
+                "reference": "5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CHECK24/apitk-common-bundle/zipball/57cc349102325984544def3618d7d9bd1b23a649",
-                "reference": "57cc349102325984544def3618d7d9bd1b23a649",
+                "url": "https://api.github.com/repos/CHECK24/apitk-common-bundle/zipball/5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a",
+                "reference": "5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a",
                 "shasum": ""
             },
             "require": {
@@ -1453,23 +1453,23 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/CHECK24/apitk-common-bundle/tree/develop",
+                "source": "https://github.com/CHECK24/apitk-common-bundle/tree/1.0.0",
                 "issues": "https://github.com/CHECK24/apitk-common-bundle/issues"
             },
-            "time": "2018-08-16T06:57:02+00:00"
+            "time": "2018-08-16T12:05:32+00:00"
         },
         {
             "name": "shopping/apitk-header-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CHECK24/apitk-header-bundle.git",
-                "reference": "8f1f99a55e70a7eda9627faec9ef9a20c82f707e"
+                "reference": "b581d7e7a6a80d629711fe34a4e83a5eddf8b58d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CHECK24/apitk-header-bundle/zipball/8f1f99a55e70a7eda9627faec9ef9a20c82f707e",
-                "reference": "8f1f99a55e70a7eda9627faec9ef9a20c82f707e",
+                "url": "https://api.github.com/repos/CHECK24/apitk-header-bundle/zipball/b581d7e7a6a80d629711fe34a4e83a5eddf8b58d",
+                "reference": "b581d7e7a6a80d629711fe34a4e83a5eddf8b58d",
                 "shasum": ""
             },
             "require": {
@@ -1500,10 +1500,10 @@
             ],
             "description": "This bundle provides helpful api helpers for RESTful API's",
             "support": {
-                "source": "https://github.com/CHECK24/apitk-header-bundle/tree/master",
+                "source": "https://github.com/CHECK24/apitk-header-bundle/tree/1.0.0",
                 "issues": "https://github.com/CHECK24/apitk-header-bundle/issues"
             },
-            "time": "2018-08-16T06:36:20+00:00"
+            "time": "2018-08-16T12:08:08+00:00"
         },
         {
             "name": "symfony/cache",
@@ -2749,10 +2749,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "shopping/apitk-common-bundle": 20,
-        "shopping/apitk-header-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

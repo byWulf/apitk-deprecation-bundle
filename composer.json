@@ -1,6 +1,6 @@
 {
   "name": "shopping/apitk-deprecation-bundle",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "type": "symfony-bundle",
   "description": "This bundle provides deprecation functionality for RESTful APIs.",
   "authors": [
@@ -27,8 +27,8 @@
     "doctrine/orm": "^2.6",
     "nelmio/api-doc-bundle": "^3.2",
     "sensio/framework-extra-bundle": "^5.1",
-    "shopping/apitk-common-bundle": "dev-master",
-    "shopping/apitk-header-bundle": "dev-master"
+    "shopping/apitk-common-bundle": "^1.0",
+    "shopping/apitk-header-bundle": "^1.0"
   },
   "repositories": [
     {
