@@ -1,11 +1,11 @@
 <?php
 
-namespace Shopping\ApiDeprecationBundle\EventListener;
+namespace Shopping\ApiTKDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
 use Shopping\ApiHelperBundle\Service\HeaderInformation;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Shopping\ApiDeprecationBundle\Annotation\Deprecated;
+use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
 use Symfony\Component\HttpKernel\Tests\Controller;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Tests\Controller;
  *
  * Remember, what controller got called in this request, so we can get the corresponding annotation in the ResponseView.
  *
- * @package Shopping\ApiDeprecationBundle\EventListener
+ * @package Shopping\ApiTKDeprecationBundle\EventListener
  */
 class DeprecationListener
 {

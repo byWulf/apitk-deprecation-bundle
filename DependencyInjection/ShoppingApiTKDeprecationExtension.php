@@ -1,13 +1,13 @@
 <?php
 
-namespace Shopping\ApiDeprecationBundle\DependencyInjection;
+namespace Shopping\ApiTKDeprecationBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class ShoppingApiDeprecationExtension extends Extension
+class ShoppingApiTKDeprecationExtension extends Extension
 {
     /**
      * Loads a specific configuration.
