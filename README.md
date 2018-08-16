@@ -40,7 +40,7 @@ use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
  */
  ```
  A notice is displayed inside the swagger documentation and a new response header
- `x-api-deprecated: deprecated` and `x-api-deprecated-removed-at: 2018-10-09` (if a date was set)
+ `x-api-deprecated: deprecated` and `x-apitk-deprecated-removed-at: 2018-10-09` (if a date was set)
  will be sent to the client.
 
 If you want to hide a certain endpoint from the docs, use the `hideFromDocs=true` parameter in
