@@ -3,7 +3,7 @@
 namespace Shopping\ApiTKDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
-use Shopping\ApiHelperBundle\Service\HeaderInformation;
+use Shopping\ApiTKHeaderBundle\Service\HeaderInformation;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
 use Symfony\Component\HttpKernel\Tests\Controller;
