@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0ee7b3a3c9d4bbe280d54ad13fda074",
+    "content-hash": "dcf2df6d6b4d9a2d0c2f48b9662d5001",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1397,16 +1397,16 @@
         },
         {
             "name": "shopping/apitk-common-bundle",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CHECK24/apitk-common-bundle.git",
-                "reference": "5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a"
+                "reference": "5a623c1ab5945f118bd27a490b610fd1ec86a056"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CHECK24/apitk-common-bundle/zipball/5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a",
-                "reference": "5ea43b4bc7439dc6166e6f42b7bd74073f0ebc0a",
+                "url": "https://api.github.com/repos/CHECK24/apitk-common-bundle/zipball/5a623c1ab5945f118bd27a490b610fd1ec86a056",
+                "reference": "5a623c1ab5945f118bd27a490b610fd1ec86a056",
                 "shasum": ""
             },
             "require": {
@@ -1453,10 +1453,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/CHECK24/apitk-common-bundle/tree/1.0.0",
+                "source": "https://github.com/CHECK24/apitk-common-bundle/tree/1.0.1",
                 "issues": "https://github.com/CHECK24/apitk-common-bundle/issues"
             },
-            "time": "2018-08-16T12:05:32+00:00"
+            "time": "2018-08-16T13:03:00+00:00"
         },
         {
             "name": "shopping/apitk-header-bundle",
