@@ -1,11 +1,11 @@
 services:
 
-    Shopping\ApiDeprecationBundle\EventListener\DeprecationListener:
+    Shopping\ApiTKDeprecationBundle\EventListener\DeprecationListener:
         autowire: true
         tags:
             - {name: kernel.event_listener, event: kernel.controller}
 
-    Shopping\ApiDeprecationBundle\Describer\AnnotationDescriber:
+    Shopping\ApiTKDeprecationBundle\Describer\AnnotationDescriber:
         autowire: true
         public: false
         arguments:

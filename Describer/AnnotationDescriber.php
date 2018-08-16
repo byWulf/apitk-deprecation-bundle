@@ -1,6 +1,6 @@
 <?php
 
-namespace Shopping\ApiDeprecationBundle\Describer;
+namespace Shopping\ApiTKDeprecationBundle\Describer;
 
 use Doctrine\Common\Annotations\Reader;
 use EXSyst\Component\Swagger\Operation;
@@ -11,14 +11,14 @@ use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareInterface;
 use Nelmio\ApiDocBundle\Describer\ModelRegistryAwareTrait;
 use Nelmio\ApiDocBundle\Util\ControllerReflector;
 use Symfony\Component\Routing\RouteCollection;
-use Shopping\ApiDeprecationBundle\Annotation\Deprecated;
+use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
 
 /**
  * Class AnnotationDescriber
  *
  * Auto generates deprecation notices to the documentation
  *
- * @package Shopping\ApiDeprecationBundle\Describer
+ * @package Shopping\ApiTKDeprecationBundle\Describer
  */
 class AnnotationDescriber implements DescriberInterface, ModelRegistryAwareInterface
 {

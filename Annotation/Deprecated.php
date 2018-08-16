@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Shopping\ApiDeprecationBundle\Annotation;
+namespace Shopping\ApiTKDeprecationBundle\Annotation;
 
 /**
  * Class Deprecated
  *
- * @package Shopping\ApiDeprecationBundle\Annotation
+ * @package Shopping\ApiTKDeprecationBundle\Annotation
  * @Annotation
  */
 class Deprecated
