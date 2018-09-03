@@ -1,6 +1,6 @@
 {
-  "name": "shopping/apitk-deprecation-bundle",
-  "version": "1.0.1",
+  "name": "check24/apitk-deprecation-bundle",
+  "version": "1.0.2",
   "type": "symfony-bundle",
   "description": "This bundle provides deprecation functionality for RESTful APIs.",
   "authors": [
