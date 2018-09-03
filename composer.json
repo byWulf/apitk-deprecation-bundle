@@ -28,16 +28,7 @@
     "doctrine/orm": "^2.6",
     "nelmio/api-doc-bundle": "^3.2",
     "sensio/framework-extra-bundle": "^5.1",
-    "shopping/apitk-common-bundle": "^1.0",
-    "shopping/apitk-header-bundle": "^1.0"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:CHECK24/apitk-header-bundle.git"
-    }, {
-      "type": "vcs",
-      "url": "git@github.com:CHECK24/apitk-common-bundle.git"
-    }
-  ]
+    "check24/apitk-common-bundle": "^1.0",
+    "check24/apitk-header-bundle": "^1.0"
+  }
 }
