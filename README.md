@@ -6,7 +6,7 @@ This bundle enables you to mark API endpoints as deprecated and inform the clien
 ## Installation
 Install the package via composer:
 ```
-composer install check24/apitk-deprecation-bundle
+composer require check24/apitk-deprecation-bundle
 ```
 
 ## Usage
