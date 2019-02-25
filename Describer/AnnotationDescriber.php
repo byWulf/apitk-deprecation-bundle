@@ -39,10 +39,28 @@ class AnnotationDescriber extends AbstractDescriber
 
             $deprecatedString = '!!! DEPRECATED !!! ';
 
+            $headerInformation = [
+                'x-api-deprecated' => [
+                    'description' => 'Flag for endpoint deprecation',
+                    'type' => 'string ("deprecated")',
+                ]
+            ];
+
             $removedString = '';
             if ($annotation->getRemovedAfter()) {
                 $removedString = 'REMOVED AT ' . $annotation->getRemovedAfter()->format('Y-m-d') . ' OR LATER !!! ';
+
+                $headerInformation['x-apitk-deprecated-removed-at'] = [
+                    'description' => 'The time when the endpoint start being deprecated',
+                    'type' => 'date ("Y-m-d")',
+                ];
             }
+
+            $response = $operation->getResponses()->get(200);
+            $response->merge(['headers' => $headerInformation]);
+
+            $operation->getResponses()->set(200, $response);
+
 
             /** @noinspection PhpToStringImplementationInspection */
             $operation->setSummary($deprecatedString . $removedString);
