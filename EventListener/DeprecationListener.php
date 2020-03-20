@@ -40,7 +40,7 @@ class DeprecationListener
         $this->headerInformation = $headerInformation;
     }
 
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelController(FilterControllerEvent $event): void
     {
         //Only transform on original action
         if (!$this->masterRequest) {
@@ -57,9 +57,15 @@ class DeprecationListener
             return;
         }
 
-        $this->headerInformation->add('deprecated', 'deprecated');
+        $this->headerInformation->add('deprecated', $annotation->getDescription() ?? 'deprecated');
         if ($annotation->getRemovedAfter()) {
-            $this->headerInformation->add('deprecated-removed-at', $annotation->getRemovedAfter()->format('Y-m-d'));
+            $this->headerInformation->add(
+                'deprecated-removed-at',
+                $annotation->getRemovedAfter()->format('Y-m-d')
+            );
+        }
+        if ($annotation->getSince()) {
+            $this->headerInformation->add('deprecated-since', $annotation->getSince()->format('Y-m-d'));
         }
     }
 

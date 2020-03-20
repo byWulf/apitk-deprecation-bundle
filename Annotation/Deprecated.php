@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Shopping\ApiTKDeprecationBundle\Annotation;
 
+use DateTime;
+
 /**
  * Class Deprecated
  *
@@ -12,9 +14,19 @@ namespace Shopping\ApiTKDeprecationBundle\Annotation;
 class Deprecated
 {
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
-    private $removedAfter = null;
+    private $removedAfter;
+
+    /**
+     * @var DateTime|null
+     */
+    private $since;
+
+    /**
+     * @var string|null
+     */
+    private $description;
 
     /**
      * @var bool
@@ -27,21 +39,42 @@ class Deprecated
     public function __construct($options = null)
     {
         if (is_array($options)) {
-            $this->removedAfter = isset($options['removedAfter']) ? new \DateTime($options['removedAfter']) : null;
+            $this->removedAfter = isset($options['removedAfter']) ? new DateTime($options['removedAfter']) : null;
+            $this->since = isset($options['since']) ? new DateTime($options['since']) : null;
+            $this->description = $options['description'] ?? null;
             $this->hideInDoc = $options['hideInDoc'] ?? false;
         }
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getRemovedAfter(): ?\DateTime
+    public function getRemovedAfter(): ?DateTime
     {
         return $this->removedAfter;
     }
 
+    /**
+     * @return bool
+     */
     public function isHiddenInDoc(): bool
     {
         return $this->hideInDoc;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getSince(): ?DateTime
+    {
+        return $this->since;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 }

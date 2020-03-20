@@ -22,15 +22,21 @@ use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
  * @Rest\Get("/v2/users")
  * @Rest\View()
  *
- * @Deprecated(removedAfter="2018-10-09")
+ * @Deprecated(removedAfter="2018-10-09", since="2018-07-01", description="use /v3/users instead")
  
  * @param User[] $users
  * @return User[]
  */
  ```
  A notice is displayed inside the swagger documentation and a new response header
- `x-apitk-deprecated: deprecated` and `x-apitk-deprecated-removed-at: 2018-10-09` (if a date was set)
+ `x-apitk-deprecated: use /v3/users instead`,
+ `x-apitk-deprecated-removed-at: 2018-10-09` (if a date was set),
+ `x-apitk-deprecated-since: 2018-07-01` (if a date was set)
  will be sent to the client.
+
+All annotation arguments are optional, so feel free to use `@Deprecated` only. In this case
+all clients will receive a `x-apitk-deprecated: deprecated` response header. The header's 
+value may be overridden by providing the `description` argument as shown above.
 
 If you want to hide a certain endpoint from the docs, use the `hideFromDocs=true` parameter in
 the `Deprecated` annotation. The corresponding action then will not be shown.
