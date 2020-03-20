@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Shopping\ApiTKDeprecationBundle\Annotation;
@@ -6,7 +7,7 @@ namespace Shopping\ApiTKDeprecationBundle\Annotation;
 use DateTime;
 
 /**
- * Class Deprecated
+ * Class Deprecated.
  *
  * @package Shopping\ApiTKDeprecationBundle\Annotation
  * @Annotation
@@ -34,7 +35,7 @@ class Deprecated
     private $hideInDoc = false;
 
     /**
-     * @param null|array $options
+     * @param array|null $options
      */
     public function __construct($options = null)
     {

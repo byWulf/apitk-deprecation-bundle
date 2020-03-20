@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shopping\ApiTKDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
-use Shopping\ApiTKHeaderBundle\Service\HeaderInformation;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use ReflectionException;
+use ReflectionObject;
 use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
-use Symfony\Component\HttpKernel\Tests\Controller;
+use Shopping\ApiTKHeaderBundle\Service\HeaderInformation;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 /**
- * Class ControllerListener
+ * Class ControllerListener.
  *
  * Remember, what controller got called in this request, so we can get the corresponding annotation in the ResponseView.
  *
@@ -21,17 +25,19 @@ class DeprecationListener
      * @var bool
      */
     private $masterRequest = true;
+
     /**
      * @var Reader
      */
     private $reader;
+
     /**
      * @var HeaderInformation
      */
     private $headerInformation;
 
     /**
-     * @param Reader $reader
+     * @param Reader            $reader
      * @param HeaderInformation $headerInformation
      */
     public function __construct(Reader $reader, HeaderInformation $headerInformation)
@@ -40,18 +46,22 @@ class DeprecationListener
         $this->headerInformation = $headerInformation;
     }
 
-    public function onKernelController(FilterControllerEvent $event): void
+    /**
+     * @param ControllerEvent $event
+     *
+     * @throws ReflectionException
+     */
+    public function onKernelController(ControllerEvent $event): void
     {
-        //Only transform on original action
+        // only transform on original action
         if (!$this->masterRequest) {
             return;
         }
         $this->masterRequest = false;
 
         // If the controller is the class instead of method in the class
-        if (!is_array($event->getController())
-            && !($annotation = $this->getAnnotationControllerClass($event->getController()))
-        ) {
+        $annotation = $this->getAnnotationControllerClass($event->getController());
+        if (!is_array($event->getController()) && !$annotation) {
             return;
         }
 
@@ -75,14 +85,17 @@ class DeprecationListener
 
     /**
      * @param callable $controller
-     * @return null|Deprecated
+     *
+     * @throws ReflectionException
+     *
+     * @return Deprecated|null
      */
     private function getViewAnnotationByController(callable $controller): ?Deprecated
     {
-        /** @var Controller $controllerObject */
-        [$controllerObject, $methodName] = $controller;
+        /** @var AbstractController $controllerObject */
+        list($controllerObject, $methodName) = $controller;
 
-        $controllerReflectionObject = new \ReflectionObject($controllerObject);
+        $controllerReflectionObject = new ReflectionObject($controllerObject);
         $reflectionMethod = $controllerReflectionObject->getMethod($methodName);
 
         $annotations = $this->reader->getMethodAnnotations($reflectionMethod);
@@ -95,9 +108,14 @@ class DeprecationListener
         return null;
     }
 
+    /**
+     * @param callable $controller
+     *
+     * @return Deprecated|null
+     */
     private function getAnnotationControllerClass(callable $controller): ?Deprecated
     {
-        $annotations = $this->reader->getClassAnnotations(new \ReflectionObject($controller));
+        $annotations = $this->reader->getClassAnnotations(new ReflectionObject($controller));
 
         foreach ($annotations as $annotation) {
             if ($annotation instanceof Deprecated) {
