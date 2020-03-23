@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Shopping\ApiTKDeprecationBundle\Annotation;
@@ -6,7 +7,7 @@ namespace Shopping\ApiTKDeprecationBundle\Annotation;
 use DateTime;
 
 /**
- * Class Deprecated
+ * Class Deprecated.
  *
  * @package Shopping\ApiTKDeprecationBundle\Annotation
  * @Annotation
@@ -34,7 +35,12 @@ class Deprecated
     private $hideInDoc = false;
 
     /**
-     * @param null|array $options
+     * @var bool|null
+     */
+    private $triggerDeprecation;
+
+    /**
+     * @param array|null $options
      */
     public function __construct($options = null)
     {
@@ -43,6 +49,7 @@ class Deprecated
             $this->since = isset($options['since']) ? new DateTime($options['since']) : null;
             $this->description = $options['description'] ?? null;
             $this->hideInDoc = $options['hideInDoc'] ?? false;
+            $this->triggerDeprecation = $options['triggerDeprecation'] ?? null;
         }
     }
 
@@ -76,5 +83,13 @@ class Deprecated
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function shouldTriggerDeprecation(): ?bool
+    {
+        return $this->triggerDeprecation;
     }
 }
