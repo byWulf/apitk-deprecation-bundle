@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shopping\ApiTKDeprecationBundle\Describer;
 
 use EXSyst\Component\Swagger\Operation;
 use EXSyst\Component\Swagger\Path;
+use ReflectionMethod;
 use Shopping\ApiTKCommonBundle\Describer\AbstractDescriber;
 use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
 
 /**
- * Class AnnotationDescriber
+ * Class AnnotationDescriber.
  *
  * Auto generates deprecation notices to the documentation
  *
@@ -17,14 +20,14 @@ use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
 class AnnotationDescriber extends AbstractDescriber
 {
     /**
-     * @param Operation         $operation
-     * @param \ReflectionMethod $classMethod
-     * @param Path              $path
-     * @param string            $method
+     * @param Operation        $operation
+     * @param ReflectionMethod $classMethod
+     * @param Path             $path
+     * @param string           $method
      */
     protected function handleOperation(
         Operation $operation,
-        \ReflectionMethod $classMethod,
+        ReflectionMethod $classMethod,
         Path $path,
         string $method
     ): void {

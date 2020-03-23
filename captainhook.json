@@ -1,0 +1,19 @@
+{
+    "pre-commit": {
+        "enabled": true,
+        "actions": [
+            {
+                "action": "php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --dry-run",
+                "options": []
+            },
+            {
+                "action": "php ./vendor/phpstan/phpstan/bin/phpstan analyse -l 1 -c phpstan.neon .",
+                "options": []
+            },
+            {
+                "action": "php ./vendor/phpmd/phpmd/src/bin/phpmd ./ text ruleset.xml --exclude vendor",
+                "options": []
+            }
+        ]
+    }
+}
