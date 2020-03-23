@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * Support for Symfony 5.0
 * PHP quality checker to this project
+* deprecation errors when deprecated endpoints are called
 
 ### Removed
 * __support for symfony < 4.3__
