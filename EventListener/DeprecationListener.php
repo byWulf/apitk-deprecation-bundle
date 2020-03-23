@@ -48,11 +48,15 @@ class DeprecationListener
         }
         $this->masterRequest = false;
 
-        if (!is_array($event->getController())) {
+        // If the controller is the class instead of method in the class
+        if (!is_array($event->getController())
+            && !($annotation = $this->getAnnotationControllerClass($event->getController()))
+        ) {
             return;
         }
 
-        $annotation = $this->getViewAnnotationByController($event->getController());
+        // Class annotation has priority over method annotation.
+        $annotation = $annotation ?? $this->getViewAnnotationByController($event->getController());
         if (!$annotation) {
             return;
         }
@@ -76,12 +80,25 @@ class DeprecationListener
     private function getViewAnnotationByController(callable $controller): ?Deprecated
     {
         /** @var Controller $controllerObject */
-        list($controllerObject, $methodName) = $controller;
+        [$controllerObject, $methodName] = $controller;
 
         $controllerReflectionObject = new \ReflectionObject($controllerObject);
         $reflectionMethod = $controllerReflectionObject->getMethod($methodName);
 
         $annotations = $this->reader->getMethodAnnotations($reflectionMethod);
+        foreach ($annotations as $annotation) {
+            if ($annotation instanceof Deprecated) {
+                return $annotation;
+            }
+        }
+
+        return null;
+    }
+
+    private function getAnnotationControllerClass(callable $controller): ?Deprecated
+    {
+        $annotations = $this->reader->getClassAnnotations(new \ReflectionObject($controller));
+
         foreach ($annotations as $annotation) {
             if ($annotation instanceof Deprecated) {
                 return $annotation;
