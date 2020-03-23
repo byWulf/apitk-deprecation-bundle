@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Shopping\ApiTKDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
+use ReflectionClass;
 use ReflectionException;
 use ReflectionObject;
 use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
@@ -164,8 +165,8 @@ class DeprecationListener
         /** @var AbstractController $controllerObject */
         list($controllerObject) = $controller;
 
-        $controllerReflectionObject = new ReflectionObject($controllerObject);
-        $annotations = $this->reader->getClassAnnotations($controllerReflectionObject);
+        $controllerReflectionClass = new ReflectionClass($controllerObject);
+        $annotations = $this->reader->getClassAnnotations($controllerReflectionClass);
 
         foreach ($annotations as $annotation) {
             if ($annotation instanceof Deprecated) {
