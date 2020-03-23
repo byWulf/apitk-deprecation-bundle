@@ -35,6 +35,11 @@ class Deprecated
     private $hideInDoc = false;
 
     /**
+     * @var bool|null
+     */
+    private $triggerDeprecation;
+
+    /**
      * @param array|null $options
      */
     public function __construct($options = null)
@@ -44,6 +49,7 @@ class Deprecated
             $this->since = isset($options['since']) ? new DateTime($options['since']) : null;
             $this->description = $options['description'] ?? null;
             $this->hideInDoc = $options['hideInDoc'] ?? false;
+            $this->triggerDeprecation = $options['triggerDeprecation'] ?? null;
         }
     }
 
@@ -77,5 +83,13 @@ class Deprecated
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function shouldTriggerDeprecation(): ?bool
+    {
+        return $this->triggerDeprecation;
     }
 }

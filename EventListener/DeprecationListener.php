@@ -78,11 +78,15 @@ class DeprecationListener
         }
 
         // method annotations take precedence over class annotations
+        /** @var Deprecated $annotation */
         $annotation = $methodAnnotation ?? $classAnnotation;
 
         $this->handleDeprecation($annotation);
 
-        if ($this->triggerDeprecations) {
+        if (
+            ($this->triggerDeprecations && $annotation->shouldTriggerDeprecation() !== false)
+            || $annotation->shouldTriggerDeprecation() === true
+        ) {
             $this->noticeDeprecationError($annotation, $event);
         }
     }
