@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd5e91d209305d3ad03c7494af9d6df2",
+    "content-hash": "aefee50c1b41bdcec0fb83250e330656",
     "packages": [
         {
             "name": "check24/apitk-common-bundle",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CHECK24/apitk-common-bundle.git",
-                "reference": "82cd1c240c12309943b6d6074e1ba7b7c2841a6d"
+                "url": "https://github.com/byWulf/apitk-common-bundle.git",
+                "reference": "cdf6f5fc57cd0ef5cee1fc763e8df34b9d29299d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CHECK24/apitk-common-bundle/zipball/82cd1c240c12309943b6d6074e1ba7b7c2841a6d",
-                "reference": "82cd1c240c12309943b6d6074e1ba7b7c2841a6d",
+                "url": "https://api.github.com/repos/byWulf/apitk-common-bundle/zipball/cdf6f5fc57cd0ef5cee1fc763e8df34b9d29299d",
+                "reference": "cdf6f5fc57cd0ef5cee1fc763e8df34b9d29299d",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,11 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "post-install-cmd": [
+                    "\\SebastianFeldmann\\CaptainHook\\Composer\\Cmd::install"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -59,20 +63,23 @@
                     "email": "alexdo@alexdo.de"
                 }
             ],
-            "time": "2018-09-03T07:12:18+00:00"
+            "support": {
+                "source": "https://github.com/byWulf/apitk-common-bundle/tree/1.0.3"
+            },
+            "time": "2018-09-03T07:45:42+00:00"
         },
         {
             "name": "check24/apitk-header-bundle",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CHECK24/apitk-header-bundle.git",
-                "reference": "d4f9610b173ea4170dff9ce512088693593b5016"
+                "url": "https://github.com/byWulf/apitk-header-bundle.git",
+                "reference": "160c3c0f7a325b56f2677aac4ecd3dcf800c7dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CHECK24/apitk-header-bundle/zipball/d4f9610b173ea4170dff9ce512088693593b5016",
-                "reference": "d4f9610b173ea4170dff9ce512088693593b5016",
+                "url": "https://api.github.com/repos/byWulf/apitk-header-bundle/zipball/160c3c0f7a325b56f2677aac4ecd3dcf800c7dc2",
+                "reference": "160c3c0f7a325b56f2677aac4ecd3dcf800c7dc2",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +102,9 @@
                     "Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Michael Wolf",
@@ -103,7 +112,10 @@
                 }
             ],
             "description": "This bundle provides helpful api helpers for RESTful API's",
-            "time": "2018-09-03T07:15:09+00:00"
+            "support": {
+                "source": "https://github.com/byWulf/apitk-header-bundle/tree/1.0.2"
+            },
+            "time": "2018-09-03T07:45:52+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -730,12 +742,12 @@
             "version": "v2.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "shasum": ""
             },
