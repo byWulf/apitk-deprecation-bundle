@@ -97,8 +97,15 @@ class DeprecationListener
      */
     private function getControllerMethodAnnotation(callable $controller): ?Deprecated
     {
-        /** @var AbstractController $controllerObject */
-        list($controllerObject, $methodName) = $controller;
+        if (is_array($controller)) {
+            /** @var AbstractController $controllerObject */
+            list($controllerObject, $methodName) = $controller;
+        } elseif (is_object($controller)) {
+            $controllerObject = $controller;
+            $methodName = '__invoke';
+        } else {
+            return null;
+        }
 
         $controllerReflectionObject = new ReflectionObject($controllerObject);
         $reflectionMethod = $controllerReflectionObject->getMethod($methodName);
@@ -122,8 +129,14 @@ class DeprecationListener
      */
     private function getControllerClassAnnotation(callable $controller): ?Deprecated
     {
-        /** @var AbstractController $controllerObject */
-        list($controllerObject) = $controller;
+        if (is_array($controller)) {
+            /** @var AbstractController $controllerObject */
+            list($controllerObject) = $controller;
+        } elseif (is_object($controller)) {
+            $controllerObject = $controller;
+        } else {
+            return null;
+        }
 
         $controllerReflectionClass = new ReflectionClass($controllerObject);
         $annotations = $this->reader->getClassAnnotations($controllerReflectionClass);
