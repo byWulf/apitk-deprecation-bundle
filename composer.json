@@ -1,6 +1,6 @@
 {
   "name": "check24/apitk-deprecation-bundle",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "type": "symfony-bundle",
   "description": "This bundle provides deprecation functionality for RESTful APIs.",
