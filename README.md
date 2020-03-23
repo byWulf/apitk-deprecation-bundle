@@ -40,3 +40,8 @@ value may be overridden by providing the `description` argument as shown above.
 
 If you want to hide a certain endpoint from the docs, use the `hideFromDocs=true` parameter in
 the `Deprecated` annotation. The corresponding action then will not be shown.
+
+### Class annotations
+Since Version 1.0.6, it's possible to put `@Deprecated` annotations on a Controller's class to mark all containing endpoints as deprecated.   
+Please keep in mind that method annotations always override class annotations completely. No merging or whatsoever will be performed.
+When a controller class has a `@Deprecated` annotation, it's impossible to  mark one or more methods of the controller as non-deprecated.

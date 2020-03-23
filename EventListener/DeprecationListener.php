@@ -3,10 +3,12 @@
 namespace Shopping\ApiTKDeprecationBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
+use ReflectionObject;
+use ReflectionClass;
+use ReflectionException;
 use Shopping\ApiTKHeaderBundle\Service\HeaderInformation;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Shopping\ApiTKDeprecationBundle\Annotation\Deprecated;
-use Symfony\Component\HttpKernel\Tests\Controller;
 
 /**
  * Class ControllerListener
@@ -48,26 +50,39 @@ class DeprecationListener
         }
         $this->masterRequest = false;
 
-        // If the controller is the class instead of method in the class
-        if (!is_array($event->getController())
-            && !($annotation = $this->getAnnotationControllerClass($event->getController()))
-        ) {
+        // check for @Deprecated on the controller class
+        $classAnnotation = $this->getControllerClassAnnotation($event->getController());
+
+        // check for @Deprecated on the controller method
+        $methodAnnotation = $this->getControllerMethodAnnotation($event->getController());
+
+        if (!$classAnnotation && !$methodAnnotation) {
+            // no-op when neither the controller nor the method have @Deprecated annotations
             return;
         }
 
-        // Class annotation has priority over method annotation.
-        $annotation = $annotation ?? $this->getViewAnnotationByController($event->getController());
-        if (!$annotation) {
-            return;
-        }
+        // method annotations take precedence over class annotations
+        /** @var Deprecated $annotation */
+        $annotation = $methodAnnotation ?? $classAnnotation;
 
+        $this->handleDeprecation($annotation);
+    }
+
+
+    /**
+     * @param Deprecated $annotation
+     */
+    private function handleDeprecation(Deprecated $annotation): void
+    {
         $this->headerInformation->add('deprecated', $annotation->getDescription() ?? 'deprecated');
+
         if ($annotation->getRemovedAfter()) {
             $this->headerInformation->add(
                 'deprecated-removed-at',
                 $annotation->getRemovedAfter()->format('Y-m-d')
             );
         }
+
         if ($annotation->getSince()) {
             $this->headerInformation->add('deprecated-since', $annotation->getSince()->format('Y-m-d'));
         }
@@ -75,14 +90,17 @@ class DeprecationListener
 
     /**
      * @param callable $controller
-     * @return null|Deprecated
+     *
+     * @throws ReflectionException
+     *
+     * @return Deprecated|null
      */
-    private function getViewAnnotationByController(callable $controller): ?Deprecated
+    private function getControllerMethodAnnotation(callable $controller): ?Deprecated
     {
-        /** @var Controller $controllerObject */
-        [$controllerObject, $methodName] = $controller;
+        /** @var AbstractController $controllerObject */
+        list($controllerObject, $methodName) = $controller;
 
-        $controllerReflectionObject = new \ReflectionObject($controllerObject);
+        $controllerReflectionObject = new ReflectionObject($controllerObject);
         $reflectionMethod = $controllerReflectionObject->getMethod($methodName);
 
         $annotations = $this->reader->getMethodAnnotations($reflectionMethod);
@@ -95,9 +113,20 @@ class DeprecationListener
         return null;
     }
 
-    private function getAnnotationControllerClass(callable $controller): ?Deprecated
+    /**
+     * @param callable $controller
+     *
+     * @throws ReflectionException
+     *
+     * @return Deprecated|null
+     */
+    private function getControllerClassAnnotation(callable $controller): ?Deprecated
     {
-        $annotations = $this->reader->getClassAnnotations(new \ReflectionObject($controller));
+        /** @var AbstractController $controllerObject */
+        list($controllerObject) = $controller;
+
+        $controllerReflectionClass = new ReflectionClass($controllerObject);
+        $annotations = $this->reader->getClassAnnotations($controllerReflectionClass);
 
         foreach ($annotations as $annotation) {
             if ($annotation instanceof Deprecated) {
